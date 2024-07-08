@@ -1,11 +1,11 @@
 import { connectDB } from "@/helper/db";
 import { Work } from "@/modal/work";
 import { NextResponse } from "next/server";
-
-connectDB();
+import jwt from "jsonwebtoken";
 
 export async function GET() {
   try {
+    await connectDB();
     const task = await Work.find();
     return NextResponse.json(task);
   } catch (error) {
@@ -18,13 +18,18 @@ export async function GET() {
 }
 
 export async function POST(request) {
-  const { title, content, userId } = await request.json();
+  const { title, content, userId, status } = await request.json();
+
+  const authToken = request.cookies.get("authToken")?.value;
+
+  const token = jwt.verify(authToken, process.env.JWT_KEY);
 
   try {
     const task = new Work({
       title,
       content,
-      userId,
+      userId: token._id,
+      status,
     });
 
     const newTask = await task.save();

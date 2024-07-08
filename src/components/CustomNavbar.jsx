@@ -1,7 +1,7 @@
 "use client";
 
-import UserContext from "@/context/userContext";
-import { logout } from "@/services/userService";
+import { UserContext } from "@/context/userContext";
+import { logingOut } from "@/services/loginService";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useContext } from "react";
@@ -13,7 +13,7 @@ const CustomNavbar = () => {
 
   async function doLogout() {
     try {
-      const result = await logout();
+      const result = await logingOut();
       console.log(result);
       context.setUser(undefined);
       router.push("/");
@@ -45,7 +45,7 @@ const CustomNavbar = () => {
                 </Link>
               </li>
               <li>
-                <Link href={"/show-tasks"} className="hover:text-blue-200">
+                <Link href={"/show-task"} className="hover:text-blue-200">
                   Show Tasks
                 </Link>
               </li>

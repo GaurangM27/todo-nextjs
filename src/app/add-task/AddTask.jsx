@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import loginSvg from "../../assets/login.svg";
+import addTaskSvg from "../../assets/addTask.svg";
 import Image from "next/image";
 import { addTask } from "@/services/taskService";
-import { taost, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const AddTask = () => {
   // console.log("this is add task component");
@@ -51,7 +51,7 @@ const AddTask = () => {
       <div className="col-span-4 col-start-5 p-5  shadow-sm">
         <div className="my-8 flex justify-center">
           <Image
-            src={loginSvg}
+            src={addTaskSvg}
             style={{
               width: "50%",
             }}

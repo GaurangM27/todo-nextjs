@@ -1,6 +1,7 @@
 import { connectDB } from "@/helper/db";
 import { User } from "@/modal/user";
 import { NextResponse } from "next/server";
+import bcrypt from "bcryptjs";
 
 connectDB();
 export async function GET() {
@@ -24,6 +25,8 @@ export async function POST(request) {
 
   // creating a new user object
   const userCreated = new User({ name, email, password, about });
+
+  userCreated.password = bcrypt.hashSync(userCreated.password, 10);
   console.log(userCreated);
   console.log({ name, email, password, about });
 
@@ -38,10 +41,15 @@ export async function POST(request) {
 
     return response;
   } catch (error) {
-    return NextResponse.json({
-      message: "user not created",
-      status: false,
-    });
+    return NextResponse.json(
+      {
+        message: "user not created",
+        status: false,
+      },
+      {
+        status: 500,
+      }
+    );
   }
 }
 
