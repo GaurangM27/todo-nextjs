@@ -32,7 +32,7 @@ const Login = () => {
         position: "top-center",
       });
       context.setUser(response.user);
-      router.push("/profile/user");
+      router.push("/");
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.message, {
