@@ -24,7 +24,7 @@ export async function GET(request) {
 
     return NextResponse.json(user);
   } catch (error) {
-    console.logs("Error verifying auth token:", error.message);
+    console.log("Error verifying auth token:", error.message);
     return NextResponse.json(
       { message: "Invalid token", success: false },
       { status: 500 }
