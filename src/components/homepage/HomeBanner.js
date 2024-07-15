@@ -20,15 +20,11 @@ const BannerSection = () => {
           <p className="text-xl mb-8">
             Organize your tasks efficiently with our task manager app.
           </p>
-          <button
-            className="bg-white text-blue-500 px-4 py-2 mt-4 rounded-md shadow-md hover:shadow-lg transition duration-300"
-            onClick={() => {
-              // Add your action button click event handler logic here
-              console.log("Action button clicked!");
-            }}
-          >
-            Learn More
-          </button>
+          <a href="#feature">
+            <button className="bg-white text-blue-500 px-4 py-2 mt-4 rounded-md shadow-md hover:shadow-lg transition duration-300">
+              Learn More
+            </button>
+          </a>
         </div>
       </div>
     </div>
